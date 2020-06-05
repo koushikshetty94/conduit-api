@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
 
 // only logged user can access the following routes
 
-// get current loged user
+// get current logged user
 
 router.get("/", auth.verifyToken, async (req, res) => {
   try {
@@ -79,7 +79,7 @@ router.get("/profile/:username", auth.verifyToken, async (req, res) => {
   }
 })
 
-
+// follow route
 
 router.post("/profiles/:username/follow", auth.verifyToken, async (req, res) => {
   try {
@@ -98,6 +98,8 @@ router.post("/profiles/:username/follow", auth.verifyToken, async (req, res) => 
     res.json({ success: false, err })
   }
 })
+
+// unfollow route
 
 router.delete("/profiles/:username/unfollow", auth.verifyToken, async (req, res) => {
   try {

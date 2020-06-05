@@ -24,7 +24,7 @@ const userSchema = new Schema({
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 
-})
+},{timestamps : true})
 
 userSchema.pre("save", function (next) {
     if (this.password && this.isModified("password")) {

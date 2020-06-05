@@ -8,6 +8,8 @@ require("dotenv").config();
 
 var indexRouter = require('./routes/api/index');
 var apiRouter = require('./routes/api/users');
+var articleRouter = require('./routes/api/articles');
+var tagRouter = require('./routes/api/tags');
 
 mongoose.connect("mongodb://localhost/conduit3", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }, (err) => {
   console.log(err ? err : "connected to mongodb");
@@ -27,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', indexRouter);
 app.use('/api/v1/users', apiRouter);
+app.use('/api/v1/articles', articleRouter);
+app.use('/api/v1/tags', tagRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
